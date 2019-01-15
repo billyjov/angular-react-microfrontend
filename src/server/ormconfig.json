@@ -1,0 +1,24 @@
+{
+    "name": "development",
+    "type": "mysql",
+    "host": "localhost",
+    "port": 3306,
+    "username": "root",
+    "password": "",
+    "database": "microfrontends",
+    "synchronize": true,
+    "entities": [
+        "src/entity/*.ts"
+    ],
+    "subscribers": [
+        "src/subscriber/*.ts"
+    ],
+    "migrations": [
+        "src/migration/*.ts"
+    ],
+    "cli": {
+        "entitiesDir": "src/entity",
+        "migrationsDir": "src/migration",
+        "subscribersDir": "src/subscriber"
+    }
+}

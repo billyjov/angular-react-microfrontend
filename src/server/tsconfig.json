@@ -1,0 +1,26 @@
+{
+    "compilerOptions": {
+        "baseUrl": "./",
+        "sourceMap": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "noImplicitAny": true,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "moduleResolution": "node",
+        "target": "es6",
+        "lib": [
+            "es5",
+            "es6"
+        ],
+        "paths": {
+            "*": [
+                "node_modules/*",
+                "./types/*"
+            ]
+        }
+    },
+    "exclude": [
+        "node_modules"
+    ]
+}
