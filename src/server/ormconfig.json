@@ -1,5 +1,4 @@
 {
-    "name": "development",
     "type": "mysql",
     "host": "localhost",
     "port": 3306,
@@ -8,17 +7,17 @@
     "database": "microfrontends",
     "synchronize": true,
     "entities": [
-        "src/entity/*.ts"
+        "api/entities/*.ts"
     ],
     "subscribers": [
-        "src/subscriber/*.ts"
+        "api/subscribers/*.ts"
     ],
     "migrations": [
-        "src/migration/*.ts"
+        "api/migrations/*.ts"
     ],
     "cli": {
-        "entitiesDir": "src/entity",
-        "migrationsDir": "src/migration",
-        "subscribersDir": "src/subscriber"
+        "entitiesDir": "api/entities",
+        "migrationsDir": "api/migrations",
+        "subscribersDir": "api/subscribers"
     }
 }

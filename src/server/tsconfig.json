@@ -7,6 +7,7 @@
         "noImplicitAny": true,
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
+        "module": "commonjs",
         "moduleResolution": "node",
         "target": "es6",
         "lib": [
@@ -22,5 +23,8 @@
     },
     "exclude": [
         "node_modules"
+    ],
+    "include": [
+        "./**/*"
     ]
 }
