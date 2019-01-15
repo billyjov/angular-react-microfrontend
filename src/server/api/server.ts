@@ -20,4 +20,4 @@ createConnection().then(async (connection: Connection) => {
         console.log(`Connected to your ${connection.options.type} database`);
         console.log('press CTRL-C to stop\n');
     });
-}).catch((error) => console.error(`typeORM connection error: ${error}`));
+}).catch((error) => console.error(`typeORM connection ${error}`));
