@@ -8,16 +8,16 @@ const app = express();
 
 createConnection().then(async (connection: Connection) => {
     app.use(bodyParser.json());
-    app.use((_req, res, next) => {
+    app.use((_req: express.Request, res: express.Response, next: express.NextFunction) => {
         res.header('Access-Control-Allow-Origin', '*');
-        res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE,');
+        res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
         next();
     });
     app.use('/api', router);
     app.set('port', 2000);
     app.listen(app.get('port'), () => {
-        console.log('Node API is running at http://localhost:%d in %s mode', app.get('port'), app.get('env'));
+        console.log(`Node API is running at http://localhost:${app.get('port')} in ${app.get('env')} mode`);
         console.log(`Connected to your ${connection.options.type} database`);
-        console.log('press CTRL-C to stop\n');
+        console.log('Press CTRL-C to stop\n');
     });
-}).catch((error) => console.error(`typeORM connection ${error}`));
+}).catch((error) => console.error(`TypeORM connection ${error}`));

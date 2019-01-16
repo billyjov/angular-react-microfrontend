@@ -17,7 +17,6 @@ router.get('/tasks', async (_req: Request, res: Response) => {
         });
     } catch (error) {
         res.status(400).send(error);
-        throw error;
     }
 });
 
@@ -38,7 +37,6 @@ router.post('/tasks', async (req: Request, res: Response) => {
         });
     } catch (error) {
         res.status(400).send(error);
-        throw error;
     }
 });
 
@@ -61,7 +59,6 @@ router.put('/tasks/:id', (req: Request, res: Response) => {
         });
     } catch (error) {
         res.status(400).send(error);
-        throw error;
     }
 });
 
@@ -78,7 +75,7 @@ router.delete('/tasks/:id', async (req: Request, res: Response) => {
             });
         }
     } catch (error) {
-
+        res.status(400).send(error);
     }
 });
 
