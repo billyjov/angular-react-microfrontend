@@ -3,7 +3,6 @@ import { DeleteResult, getManager, UpdateResult } from 'typeorm';
 import { Task } from '../entities/Task';
 
 const router = Router();
-const task: Task = new Task();
 
 router.get('/tasks', async (_req: Request, res: Response) => {
     try {
@@ -23,6 +22,7 @@ router.get('/tasks', async (_req: Request, res: Response) => {
 router.post('/tasks', async (req: Request, res: Response) => {
     try {
         const taskRepository = getManager().getRepository(Task);
+        const task: Task = new Task();
         task.title = req.body.title;
         task.done = req.body.done;
         task.dueDate = req.body.dueDate;
@@ -43,6 +43,7 @@ router.post('/tasks', async (req: Request, res: Response) => {
 router.put('/tasks/:id', (req: Request, res: Response) => {
     try {
         const taskRepository = getManager().getRepository(Task);
+        const task: Task = new Task();
         task.title = req.body.title;
         task.done = req.body.done;
         task.dueDate = req.body.dueDate;
