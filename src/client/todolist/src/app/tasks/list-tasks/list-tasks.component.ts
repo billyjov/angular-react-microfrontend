@@ -19,8 +19,6 @@ export class ListTasksComponent implements OnInit {
   @Input()
   public taskForm: FormGroup;
 
-  public enableEditMode: boolean;
-
   constructor(private tasksHttpService: TasksHttpService) { }
 
   ngOnInit() {
@@ -36,6 +34,6 @@ export class ListTasksComponent implements OnInit {
       title: task.title,
       dueDate: formatedDueDate
     });
-    this.enableEditMode = true;
+    this.tasksHttpService.isEditMode.next(true);
   }
 }

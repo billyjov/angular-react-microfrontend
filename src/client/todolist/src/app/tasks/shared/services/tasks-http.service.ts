@@ -10,9 +10,14 @@ import { ApiService } from 'src/app/core/api.service';
 export class TasksHttpService {
 
   private taskSubject: BehaviorSubject<Task[]>;
+  private editModeSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   constructor(private apiService: ApiService) {
     this.taskSubject = new BehaviorSubject<Task[]>([]);
+  }
+
+  public get isEditMode(): BehaviorSubject<boolean> {
+    return this.editModeSubject;
   }
 
   public retrieveAllTasks(): void {

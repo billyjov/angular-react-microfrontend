@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { Task } from '../shared/models/task.model';
@@ -13,7 +13,6 @@ export class AddTasksComponent implements OnInit {
 
   public taskForm: FormGroup;
 
-  @Input()
   public isEditMode: boolean;
   public isSubmitted: boolean;
   constructor(
@@ -23,6 +22,9 @@ export class AddTasksComponent implements OnInit {
 
   ngOnInit() {
     this.buildTaskForm();
+    this.tasksHttpService.isEditMode.subscribe((value: boolean) => {
+      this.isEditMode = value;
+    });
   }
 
   public submitTaskForm(): void {
@@ -33,9 +35,11 @@ export class AddTasksComponent implements OnInit {
     this.isEditMode ? this.updateTask() : this.addTask();
     this.isSubmitted = false;
   }
+
   public get controls() {
     return this.taskForm.controls;
   }
+
   private addTask(): void {
     const newTask: Task = this.taskForm.value;
 
