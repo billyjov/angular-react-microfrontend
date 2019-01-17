@@ -1,0 +1,5 @@
+<div class="container ng-app">
+  <app-add-tasks #addTasks [isEditMode]="listTasks.enableEditMode"></app-add-tasks>
+  <hr>
+  <app-list-tasks [taskForm]="addTasks.taskForm" #listTasks></app-list-tasks>
+</div>

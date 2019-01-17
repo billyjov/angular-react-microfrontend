@@ -1,0 +1,30 @@
+<div class="card mt-5">
+  <div class="card-header bg-info text-white text-center">
+    <h4>Add new task to your todo list :)</h4>
+  </div>
+  <div class="card-body">
+    <form [formGroup]="taskForm" (ngSubmit)="submitTaskForm()">
+      <div class="form-row">
+        <div class="form-group col-lg-8">
+          <label for="title">Title</label>
+          <input type="text" class="form-control" formControlName="title"
+            placeholder="enter your task title" [ngClass]="{'is-invalid': isSubmitted && controls.title.errors}">
+          <div *ngIf="isSubmitted && controls.title.errors" class="invalid-feedback">
+            Please enter a task title.
+          </div>
+        </div>
+        <div class="form-group col-lg-4">
+          <label for="dueDate">Due date</label>
+          <input type="date" id="dueDate" class="form-control" formControlName="dueDate">
+        </div>
+      </div>
+      <input type="text" hidden formControlName="id">
+      <button class="btn" [ngClass]="{
+        'btn-primary': isEditMode,
+        'btn-info': !isEditMode
+      }">
+        {{isEditMode ? 'Update Task' : 'Create Task'}}
+      </button>
+    </form>
+  </div>
+</div>

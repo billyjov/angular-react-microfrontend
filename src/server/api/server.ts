@@ -11,6 +11,7 @@ createConnection().then(async (connection: Connection) => {
     app.use((_req: express.Request, res: express.Response, next: express.NextFunction) => {
         res.header('Access-Control-Allow-Origin', '*');
         res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+        res.header('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type');
         next();
     });
     app.use('/api', router);

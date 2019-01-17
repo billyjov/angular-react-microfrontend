@@ -1,0 +1,28 @@
+<table class="table table-striped table-dark">
+  <thead>
+    <tr>
+      <th>Mark as done</th>
+      <th>Title</th>
+      <th>Due Date</th>
+      <th>Created At</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let task of tasks$ | async">
+      <td>
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" id="markAsDone">
+          <label class="custom-control-label" for="markAsDone"></label>
+        </div>
+      </td>
+      <td>{{task.title}}</td>
+      <td>{{task.dueDate | date: 'mediumDate'}}</td>
+      <td>{{task.createdAt | date: 'medium'}}</td>
+      <td>
+        <button class="btn btn-info" (click)="editTask(task)">
+          Edit
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
