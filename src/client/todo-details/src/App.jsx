@@ -10,6 +10,7 @@ class App extends Component {
                         React app sucessfully loaded
                     </p>
                 </header>
+                <app-ng-todolist></app-ng-todolist>
             </div>
         );
     }
