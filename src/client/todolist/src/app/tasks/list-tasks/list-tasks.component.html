@@ -8,11 +8,12 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let task of tasks$ | async">
+    <tr *ngFor="let task of tasks$ | async; let i = index">
       <td>
         <div class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input" id="markAsDone">
-          <label class="custom-control-label" for="markAsDone"></label>
+          <input type="checkbox" class="custom-control-input" [checked]="task.done"
+            (change)="markAsDone($event, task)" id="{{i}}">
+          <label class="custom-control-label" for="{{i}}"></label>
         </div>
       </td>
       <td>{{task.title}}</td>
@@ -21,6 +22,11 @@
       <td>
         <button class="btn btn-info" (click)="editTask(task)">
           Edit
+        </button>
+      </td>
+      <td>
+        <button class="btn btn-danger" (click)="removeTask(task)">
+          Remove
         </button>
       </td>
     </tr>

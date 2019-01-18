@@ -36,4 +36,21 @@ export class ListTasksComponent implements OnInit {
     });
     this.tasksHttpService.isEditMode.next(true);
   }
+
+  public removeTask(task: Task): void {
+    this.tasksHttpService.deleteTask(task).subscribe((response: Task) => {
+      if (response) {
+        this.tasksHttpService.retrieveAllTasks();
+      }
+    });
+  }
+
+  public markAsDone(isChecked, task: Task): void {
+    task.done = isChecked.target.checked;
+    this.tasksHttpService.updateTask(task).subscribe((response: Task) => {
+      if (response) {
+        this.tasksHttpService.retrieveAllTasks();
+      }
+    });
+  }
 }
