@@ -1,5 +1,9 @@
 @import '~bootstrap/scss/bootstrap';
 .is-done {
-    background-color: #fff;
-    text-decoration: line-through;
+    &:nth-of-type(odd),
+    &:nth-of-type(even) {
+        background-color: #1E636E !important;
+        color: #FFFFFF69;
+        text-decoration: line-through;
+    }
 }

@@ -8,7 +8,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let task of tasks$ | async; let i = index">
+    <tr *ngFor="let task of tasks$ | async; let i = index" [ngClass]="{'is-done': task.done}">
       <td>
         <div class="custom-control custom-checkbox">
           <input type="checkbox" class="custom-control-input" [checked]="task.done"
@@ -20,7 +20,7 @@
       <td>{{task.dueDate | date: 'mediumDate'}}</td>
       <td>{{task.createdAt | date: 'medium'}}</td>
       <td>
-        <button class="btn btn-info" (click)="editTask(task)">
+        <button class="btn btn-info" (click)="editTask(task)" [disabled]="task.done">
           Edit
         </button>
       </td>
