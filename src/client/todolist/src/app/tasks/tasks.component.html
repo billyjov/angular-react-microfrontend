@@ -1,6 +1,5 @@
 <div class="container ng-app">
-  <h1>Valeur de l'evenement envoyé: {{a}}</h1>
   <app-add-tasks #addTasks></app-add-tasks>
   <hr>
-  <app-list-tasks [taskForm]="addTasks.taskForm" (login)="testMethodParent($event)"></app-list-tasks>
+  <app-list-tasks [taskForm]="addTasks.taskForm"></app-list-tasks>
 </div>
