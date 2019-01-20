@@ -2,10 +2,9 @@ import { Component, OnInit, Input } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { FormGroup } from '@angular/forms';
 
-import { Observable } from 'rxjs';
-
 import { Task } from '../shared/models/task.model';
 import { TasksHttpService } from '../shared/services/tasks-http.service';
+import { TaskCounterService } from 'src/app/core/task-counter.service';
 
 @Component({
   selector: 'app-list-tasks',
@@ -14,16 +13,20 @@ import { TasksHttpService } from '../shared/services/tasks-http.service';
 })
 export class ListTasksComponent implements OnInit {
 
-  public tasks$: Observable<Task[]>;
+  public tasks: Task[];
+  public doneTasks: Task[];
 
   @Input()
   public taskForm: FormGroup;
 
-  constructor(private tasksHttpService: TasksHttpService) { }
+  constructor(
+    private tasksHttpService: TasksHttpService,
+    private taskCounterService: TaskCounterService
+  ) { }
 
   ngOnInit() {
     this.tasksHttpService.retrieveAllTasks();
-    this.tasks$ = this.tasksHttpService.getAllTasks();
+    this.initTaskLists();
   }
 
   public editTask(task: Task): void {
@@ -52,5 +55,17 @@ export class ListTasksComponent implements OnInit {
         this.tasksHttpService.retrieveAllTasks();
       }
     });
+  }
+
+  private initTaskLists(): void {
+    this.tasksHttpService.getAllTasks().subscribe((allTasks: Task[]) => {
+      this.tasks = allTasks;
+      this.emitTotalDoneTask();
+    });
+  }
+
+  public emitTotalDoneTask(): void {
+    this.doneTasks = this.tasks.filter(tasks => tasks.done);
+    this.taskCounterService.updateDoneTasks(this.doneTasks);
   }
 }

@@ -13,7 +13,9 @@ import { TasksModule } from './tasks/tasks.module';
     BrowserModule,
     TasksModule
   ],
-  bootstrap: [AppComponent],
+  // Enable bootstrap array only for development of
+  // the Angular CLI todo list part alone.
+  // bootstrap: [AppComponent],
   entryComponents: [AppComponent]
 })
 export class AppModule {

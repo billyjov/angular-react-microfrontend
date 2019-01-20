@@ -8,11 +8,11 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let task of tasks$ | async; let i = index" [ngClass]="{'is-done': task.done}">
+    <tr *ngFor="let task of tasks; let i = index" [ngClass]="{'is-done': task.done}">
       <td>
         <div class="custom-control custom-checkbox">
           <input type="checkbox" class="custom-control-input" [checked]="task.done"
-            (change)="markAsDone($event, task)" id="{{i}}">
+            (change)="markAsDone($event, task) && emitTotalDoneTask()" id="{{i}}">
           <label class="custom-control-label" for="{{i}}"></label>
         </div>
       </td>
