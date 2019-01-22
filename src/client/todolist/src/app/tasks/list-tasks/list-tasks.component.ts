@@ -14,7 +14,6 @@ import { TaskCounterService } from 'src/app/core/task-counter.service';
 export class ListTasksComponent implements OnInit {
 
   public tasks: Task[];
-  public doneTasks: Task[];
 
   @Input()
   public taskForm: FormGroup;
@@ -60,12 +59,7 @@ export class ListTasksComponent implements OnInit {
   private initTaskLists(): void {
     this.tasksHttpService.getAllTasks().subscribe((allTasks: Task[]) => {
       this.tasks = allTasks;
-      this.emitTotalDoneTask();
+      this.taskCounterService.emitAllTasks(allTasks);
     });
-  }
-
-  public emitTotalDoneTask(): void {
-    this.doneTasks = this.tasks.filter(tasks => tasks.done);
-    this.taskCounterService.updateDoneTasks(this.doneTasks);
   }
 }

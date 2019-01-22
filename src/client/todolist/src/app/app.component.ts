@@ -11,13 +11,13 @@ import { Task } from './tasks/shared/models/task.model';
 })
 export class AppComponent implements OnInit {
 
-  @Output() allDoneTasksEmitter = new EventEmitter<Task[]>();
+  @Output() ngAllTasksEmitter = new EventEmitter<Task[]>();
 
   constructor(private taskCounterService: TaskCounterService) { }
 
   ngOnInit() {
-    this.taskCounterService.doneTasksObservable.subscribe(doneTasks => {
-      this.allDoneTasksEmitter.emit(doneTasks);
+    this.taskCounterService.allTasksObservable.subscribe(tasks => {
+      this.ngAllTasksEmitter.emit(tasks);
     });
   }
 }

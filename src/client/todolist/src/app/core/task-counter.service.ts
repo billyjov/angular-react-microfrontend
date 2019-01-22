@@ -9,12 +9,12 @@ import { Task } from '../tasks/shared/models/task.model';
 })
 export class TaskCounterService {
 
-  private doneTasksSubject = new BehaviorSubject<Task[]>([]);
-  public doneTasksObservable = this.doneTasksSubject.asObservable();
+  private allTaskSubject = new BehaviorSubject<Task[]>([]);
+  public allTasksObservable = this.allTaskSubject.asObservable();
 
   constructor() { }
 
-  public updateDoneTasks(doneTasks: Task[]): void {
-    this.doneTasksSubject.next(doneTasks);
+  public emitAllTasks(tasks: Task[]): void {
+    this.allTaskSubject.next(tasks);
   }
 }
