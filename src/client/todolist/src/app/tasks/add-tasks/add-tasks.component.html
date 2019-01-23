@@ -1,6 +1,6 @@
-<div class="card mt-5">
+<div class="card mt-3">
   <div class="card-header bg-info text-white text-center">
-    <h4>Add new task to your todo list :)</h4>
+    <h4 class="text-uppercase">Add new task to your todo list :)</h4>
   </div>
   <div class="card-body">
     <form [formGroup]="taskForm" (ngSubmit)="submitTaskForm()">
@@ -15,7 +15,8 @@
         </div>
         <div class="form-group col-lg-4">
           <label for="dueDate">Due date</label>
-          <input type="date" id="dueDate" class="form-control" formControlName="dueDate">
+          <input type="date" id="dueDate" [min]="getActualDate()" class="form-control"
+            formControlName="dueDate">
         </div>
       </div>
       <input type="text" hidden formControlName="id">

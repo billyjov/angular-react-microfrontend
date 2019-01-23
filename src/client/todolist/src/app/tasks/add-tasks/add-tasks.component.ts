@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { DatePipe } from '@angular/common';
 
 import { Task } from '../shared/models/task.model';
 import { TasksHttpService } from '../shared/services/tasks-http.service';
@@ -12,7 +13,6 @@ import { TasksHttpService } from '../shared/services/tasks-http.service';
 export class AddTasksComponent implements OnInit {
 
   public taskForm: FormGroup;
-
   public isEditMode: boolean;
   public isSubmitted: boolean;
   constructor(
@@ -34,6 +34,12 @@ export class AddTasksComponent implements OnInit {
     }
     this.isEditMode ? this.updateTask() : this.addTask();
     this.isSubmitted = false;
+  }
+
+  public getActualDate(): string {
+    const datePipe = new DatePipe('en-US');
+    const today = datePipe.transform(new Date(), 'yyyy-MM-dd');
+    return today;
   }
 
   public get controls() {
@@ -68,7 +74,7 @@ export class AddTasksComponent implements OnInit {
     this.taskForm = this.formBuilder.group({
       id: [''],
       title: ['', Validators.required],
-      dueDate: ['']
+      dueDate: [this.getActualDate()]
     });
   }
 }
