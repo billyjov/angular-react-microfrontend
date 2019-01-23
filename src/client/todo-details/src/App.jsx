@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
+
 import './App.css';
 import logo from './logo.svg';
+
+import Header from './components/header/Header.jsx';
+import DailyTasks from './components/daily-tasks/index.jsx';
+import WeeklyTasks from './components/weekly-tasks/index.jsx';
 
 export default class App extends Component {
     constructor(props) {
@@ -8,7 +13,8 @@ export default class App extends Component {
         this.state = {
             allTasks: [],
             totalDoneTasks: [],
-            taskForToday: []
+            allDailyTasks: [],
+            allWeeklyTasks: []
         };
     }
 
@@ -21,14 +27,15 @@ export default class App extends Component {
     }
 
     handleTasksEvent = (tasksEvent) => {
-        console.log('event got: ', tasksEvent);
         const allTasks = tasksEvent.detail;
         const allDoneTasks = this.getAllDoneTasks(allTasks);
-        const taskForToday = this.getTodayDueDateTasks(allTasks)
+        const dailyTasks = this.getDailyTasks(allTasks)
+        const weeklyTasks = this.getWeeklyTasks(allTasks);
         this.setState({
             allTasks: allTasks,
             totalDoneTasks: allDoneTasks,
-            taskForToday: taskForToday
+            allDailyTasks: dailyTasks,
+            allWeeklyTasks: weeklyTasks
         });
     }
 
@@ -37,66 +44,51 @@ export default class App extends Component {
         return allDoneTasks;
     }
 
-    getTodayDueDateTasks = (allTasks) => {
-        const today = new Date().toDateString();
-        console.log('all task for filter today', allTasks);
-        console.log('today is', today);
-        const taskForToday = allTasks.filter(tasks => (tasks.dueDate) === today);
-        console.log('task for today ', taskForToday);
-        return taskForToday;
+    getDailyTasks = (allTasks) => {
+        const date = new Date();
+        date.setUTCHours(0, 0, 0, 0);
+        const today = date.toISOString();
+        const dailyTasks = allTasks.filter(tasks => tasks.dueDate === today);
+        return dailyTasks;
+    }
+
+    getWeeklyTasks = (allTasks) => {
+        const date = new Date();
+        date.setUTCHours(0, 0, 0, 0);
+        const firstDayOfWeek = new Date(date.setDate(date.getDate() - date.getDay())).toISOString();
+        const lastDayOfWeek = new Date(date.setDate(date.getDate() - date.getDay() + 6)).toISOString();
+        let weeklyTasks = [];
+        allTasks.forEach(task => {
+            if (this.isDateBetweenRange(firstDayOfWeek, lastDayOfWeek, task.dueDate)) {
+                weeklyTasks.push(task);
+            }
+        });
+        return weeklyTasks;
+    }
+
+    isDateBetweenRange = (from, to, dateToCheck) => {
+        const fromValue = Date.parse(from);
+        const toValue = Date.parse(to);
+        const dateToCheckValue = Date.parse(dateToCheck);
+
+        if (dateToCheckValue <= toValue && dateToCheckValue >= fromValue) {
+            return true;
+        }
+        return false;
     }
 
     render() {
         return (
             <div className="App mb-5">
-                <header className="App-header mb-5">
-                    <nav className="navbar navbar-light bg-info">
-                        <a className="navbar-brand" href=""><img src={logo} className="App-logo" alt="logo" /></a>
-                        <div className="text-right">
-                            <span className="navbar-icon--container">
-                                <i className="material-icons navbar-icon">
-                                    assignment
-                                </i>
-                                <span className="navbar-icon--badge">{this.state.allTasks.length}</span>
-                            </span>
-                            <span className="navbar-icon--container">
-                                <i className="material-icons navbar-icon">
-                                    assignment_turned_in
-                                </i>
-                                <span className="navbar-icon--badge">{this.state.totalDoneTasks.length}</span>
-                            </span>
-
-                        </div>
-                    </nav>
-                </header>
+                <Header logo={logo} allTasks={this.state.allTasks} totalDoneTasks={this.state.totalDoneTasks}></Header>
                 <div className="container-fluid">
                     <div className="row">
                         <div className="col-md-8">
                             <app-ng-todolist ref={elem => this.nv = elem} reactEvent={this.state.totalDoneTasks}></app-ng-todolist>
                         </div>
                         <div className="col-md-4">
-                            <div className="card mb-5">
-                                <div className="card-header bg-info text-white">
-                                    <h4 className="text-uppercase">To do today</h4>
-                                </div>
-                                <div className="card-body">
-                                    <p className="alert alert-primary d-flex">
-                                        <i className="material-icons mr-2">visibility_off</i>
-                                        <span>Nothing to see yet</span>
-                                    </p>
-                                </div>
-                            </div>
-                            <div className="card">
-                                <div className="card-header bg-info text-white">
-                                    <h4 className="text-uppercase">To do this week</h4>
-                                </div>
-                                <div className="card-body">
-                                    <p className="alert alert-primary d-flex">
-                                        <i className="material-icons mr-2">visibility_off</i>
-                                        <span>Nothing to see yet</span>
-                                    </p>
-                                </div>
-                            </div>
+                            <DailyTasks logo={logo} allDailyTasks={this.state.allDailyTasks}></DailyTasks>
+                            <WeeklyTasks logo={logo} allWeeklyTasks={this.state.allWeeklyTasks}></WeeklyTasks>
                         </div>
                     </div>
                 </div>
