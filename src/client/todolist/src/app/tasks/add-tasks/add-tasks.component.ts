@@ -67,7 +67,7 @@ export class AddTasksComponent implements OnInit {
 
   private updateTaskList(): void {
     this.tasksHttpService.retrieveAllTasks();
-    this.taskForm.reset();
+    this.taskForm.reset({ dueDate: [this.getActualDate()] });
   }
 
   private buildTaskForm(): void {
