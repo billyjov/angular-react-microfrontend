@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 import { Task } from '../tasks/shared/models/task.model';
 
@@ -9,12 +9,14 @@ import { Task } from '../tasks/shared/models/task.model';
 })
 export class TaskCounterService {
 
-  private allTaskSubject = new BehaviorSubject<Task[]>([]);
-  public allTasksObservable = this.allTaskSubject.asObservable();
-
+  private allTasksSubject = new BehaviorSubject<Task[]>([]);
   constructor() { }
 
   public emitAllTasks(tasks: Task[]): void {
-    this.allTaskSubject.next(tasks);
+    this.allTasksSubject.next(tasks);
+  }
+
+  public getAllTaskSubject(): Observable<Task[]> {
+    return this.allTasksSubject.asObservable();
   }
 }

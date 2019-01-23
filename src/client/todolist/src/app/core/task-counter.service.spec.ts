@@ -3,10 +3,23 @@ import { TestBed } from '@angular/core/testing';
 import { TaskCounterService } from './task-counter.service';
 
 describe('TaskCounterService', () => {
-  beforeEach(() => TestBed.configureTestingModule({}));
+  let service: TaskCounterService;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({});
+    service = TestBed.get(TaskCounterService);
+  });
 
   it('should be created', () => {
-    const service: TaskCounterService = TestBed.get(TaskCounterService);
     expect(service).toBeTruthy();
   });
+
+  it('#getAllTaskSubject() should get all subcribed subject', (done) => {
+    service.getAllTaskSubject().subscribe((result) => {
+      expect(result).toEqual([]);
+      done();
+    });
+  });
+
+
 });

@@ -35,7 +35,6 @@ export class TasksHttpService {
   }
 
   public createTask(task: Task): Observable<Task> {
-    console.log('task got: ', task);
     return this.apiService.post('/api/tasks', task);
   }
 

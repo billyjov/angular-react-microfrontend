@@ -16,7 +16,7 @@ export class AppComponent implements OnInit {
   constructor(private taskCounterService: TaskCounterService) { }
 
   ngOnInit() {
-    this.taskCounterService.allTasksObservable.subscribe(tasks => {
+    this.taskCounterService.getAllTaskSubject().subscribe(tasks => {
       this.ngAllTasksEmitter.emit(tasks);
     });
   }
