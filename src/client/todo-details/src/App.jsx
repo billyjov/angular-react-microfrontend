@@ -4,6 +4,7 @@ import './App.css';
 import logo from './logo.svg';
 
 import Header from './components/header/Header.jsx';
+import Footer from './components/footer/Footer.jsx';
 import DailyTasks from './components/daily-tasks/index.jsx';
 import WeeklyTasks from './components/weekly-tasks/index.jsx';
 
@@ -79,9 +80,9 @@ export default class App extends Component {
 
     render() {
         return (
-            <div className="App mb-5">
+            <div className="App">
                 <Header logo={logo} allTasks={this.state.allTasks} totalDoneTasks={this.state.totalDoneTasks}></Header>
-                <div className="container-fluid">
+                <div className="container-fluid mb-5">
                     <div className="row">
                         <div className="col-md-8">
                             <app-ng-todolist ref={elem => this.nv = elem} reactEvent={this.state.totalDoneTasks}></app-ng-todolist>
@@ -92,6 +93,7 @@ export default class App extends Component {
                         </div>
                     </div>
                 </div>
+                <Footer></Footer>
             </div>
         );
     }
