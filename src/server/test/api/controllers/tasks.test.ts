@@ -37,14 +37,10 @@ describe('/api/tasks', () => {
             .set('Accept', 'application/json')
             .expect(200)
             .end((err, res) => {
-
                 if (err) {
                     throw err;
                 }
                 expect(res.body.message).toBe('Task successfully created');
-                console.log(res.body.response.id);
-                supertest(app).del(`/api/tasks/${res.body.response.id}`);
-                supertest(app).delete(`/api/tasks/${res.body.response.id}`);
                 done();
             });
     });
