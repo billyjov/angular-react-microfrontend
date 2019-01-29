@@ -15,6 +15,8 @@ export class AddTasksComponent implements OnInit {
   public taskForm: FormGroup;
   public isEditMode: boolean;
   public isSubmitted: boolean;
+  private datePipe: DatePipe = new DatePipe('en-US');
+
   constructor(
     private formBuilder: FormBuilder,
     private tasksHttpService: TasksHttpService
@@ -37,8 +39,7 @@ export class AddTasksComponent implements OnInit {
   }
 
   public getActualDate(): string {
-    const datePipe = new DatePipe('en-US');
-    const today = datePipe.transform(new Date(), 'yyyy-MM-dd');
+    const today = this.datePipe.transform(new Date(), 'yyyy-MM-dd');
     return today;
   }
 
@@ -47,6 +48,7 @@ export class AddTasksComponent implements OnInit {
   }
 
   private addTask(): void {
+    this.taskForm.value.dueDate = this.datePipe.transform(this.taskForm.value.dueDate, 'yyyy-MM-dd');
     const newTask: Task = this.taskForm.value;
 
     this.tasksHttpService.createTask(newTask).subscribe((task: Task) => {
@@ -57,6 +59,7 @@ export class AddTasksComponent implements OnInit {
   }
 
   private updateTask(): void {
+    this.taskForm.value.dueDate = this.datePipe.transform(this.taskForm.value.dueDate, 'yyyy-MM-dd');
     this.tasksHttpService.updateTask(this.taskForm.value).subscribe((updatedTask: Task) => {
       if (updatedTask) {
         this.updateTaskList();
