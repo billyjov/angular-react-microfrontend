@@ -2,7 +2,7 @@
 import 'jest';
 
 describe('Jest Tests', () => {
-    test('Verify Tests Work', () => {
+    test('Verify Tests Works', () => {
         expect(true).toBeTruthy();
     });
 });
