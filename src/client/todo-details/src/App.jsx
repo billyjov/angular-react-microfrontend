@@ -20,7 +20,7 @@ export default class App extends Component {
     }
 
     componentDidMount() {
-        this.nv.addEventListener('ngAllTasksEmitter', this.handleTasksEvent);
+        this.nv.addEventListener('ngAllTasksEmitter', this.handleTasksEvent, { passive: true });
     }
 
     componentWillUnmount() {
@@ -47,9 +47,18 @@ export default class App extends Component {
 
     getDailyTasks = (allTasks) => {
         const date = new Date();
-        date.setUTCHours(0, 0, 0, 0);
-        const today = date.toISOString();
-        const dailyTasks = allTasks.filter(tasks => tasks.dueDate === today);
+        const year = date.getUTCFullYear();
+        const month = (date.getUTCMonth() < 9 ? '0' : '') + (date.getUTCMonth() + 1);
+        const day = date.getUTCDate()
+        const today = `${year}-${month}-${day}`;
+        let dailyTasks = [];
+        allTasks.forEach(task => {
+            let dueDateString = String(task.dueDate);
+            let dueDate = dueDateString.substr(0, dueDateString.indexOf('T'));
+            if (dueDate === today) {
+                dailyTasks.push(task);
+            }
+        });
         return dailyTasks;
     }
 
