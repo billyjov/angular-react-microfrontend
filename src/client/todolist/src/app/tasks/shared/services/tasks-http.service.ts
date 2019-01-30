@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 
-import { Task } from '../models/task.model';
+import { Task } from 'src/app/tasks/shared/models/task.model';
 import { ApiService } from 'src/app/core/api.service';
 
 @Injectable({

@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { DatePipe } from '@angular/common';
 
-import { Task } from '../shared/models/task.model';
-import { TasksHttpService } from '../shared/services/tasks-http.service';
+import { Task } from 'src/app/tasks/shared/models/task.model';
+import { TasksHttpService } from 'src/app/tasks/shared/services/tasks-http.service';
 
 @Component({
   selector: 'app-add-tasks',
