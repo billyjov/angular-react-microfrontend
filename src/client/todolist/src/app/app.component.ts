@@ -7,7 +7,9 @@ import { Task } from './tasks/shared/models/task.model';
   selector: 'app-ng-todolist',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  encapsulation: ViewEncapsulation.ShadowDom
+  // A better way will be ShadowDOM encapsulation.
+  // Keep calm and wait :-)
+  encapsulation: ViewEncapsulation.Emulated
 })
 export class AppComponent implements OnInit {
 

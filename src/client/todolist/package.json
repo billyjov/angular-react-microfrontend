@@ -21,12 +21,13 @@
     "@angular/platform-browser": "~7.2.0",
     "@angular/platform-browser-dynamic": "~7.2.0",
     "@angular/router": "~7.2.0",
+    "@webcomponents/custom-elements": "^1.2.1",
     "bootstrap": "^4.2.1",
     "core-js": "^2.5.4",
+    "document-register-element": "^1.7.2",
     "material-icons": "^0.3.0",
     "rxjs": "~6.3.3",
-    "zone.js": "~0.8.26",
-    "document-register-element": "^1.7.2"
+    "zone.js": "~0.8.26"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.12.0",
