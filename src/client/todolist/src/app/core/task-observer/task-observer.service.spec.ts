@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { TaskEmitterService } from './task-emitter.service';
+import { TaskObserverService } from './task-observer.service';
 
-describe('TaskEmitterService', () => {
-  let service: TaskEmitterService;
+describe('TaskObserverService', () => {
+  let service: TaskObserverService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.get(TaskEmitterService);
+    service = TestBed.get(TaskObserverService);
   });
 
   it('should be created', () => {

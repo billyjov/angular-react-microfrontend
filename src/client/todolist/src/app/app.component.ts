@@ -1,6 +1,6 @@
 import { Component, ViewEncapsulation, Output, EventEmitter, OnInit } from '@angular/core';
 
-import { TaskEmitterService } from './core/task-emitter/task-emitter.service';
+import { TaskObserverService } from './core/task-observer/task-observer.service';
 import { Task } from './tasks/shared/models/task.model';
 
 @Component({
@@ -15,10 +15,10 @@ export class AppComponent implements OnInit {
 
   @Output() ngAllTasksEmitter = new EventEmitter<Task[]>();
 
-  constructor(private taskEmitterService: TaskEmitterService) { }
+  constructor(private taskObserverService: TaskObserverService) { }
 
   ngOnInit() {
-    this.taskEmitterService.getAllTaskSubject().subscribe(tasks => {
+    this.taskObserverService.getAllTaskSubject().subscribe(tasks => {
       this.ngAllTasksEmitter.emit(tasks);
     });
   }

@@ -7,7 +7,7 @@ import { Task } from 'src/app/tasks/shared/models/task.model';
 @Injectable({
   providedIn: 'root'
 })
-export class TaskEmitterService {
+export class TaskObserverService {
 
   private allTasksSubject = new BehaviorSubject<Task[]>([]);
   constructor() { }

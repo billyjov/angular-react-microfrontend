@@ -4,7 +4,7 @@ import { FormGroup } from '@angular/forms';
 
 import { Task } from 'src/app/tasks/shared/models/task.model';
 import { TasksHttpService } from 'src/app/tasks/shared/services/tasks-http.service';
-import { TaskEmitterService } from 'src/app/core/task-emitter/task-emitter.service';
+import { TaskObserverService } from 'src/app/core/task-observer/task-observer.service';
 
 @Component({
   selector: 'app-list-tasks',
@@ -20,7 +20,7 @@ export class ListTasksComponent implements OnInit {
 
   constructor(
     private tasksHttpService: TasksHttpService,
-    private taskEmitterService: TaskEmitterService
+    private taskObserverService: TaskObserverService
   ) { }
 
   ngOnInit() {
@@ -59,7 +59,7 @@ export class ListTasksComponent implements OnInit {
   private initTaskLists(): void {
     this.tasksHttpService.getAllTasks().subscribe((allTasks: Task[]) => {
       this.tasks = allTasks;
-      this.taskEmitterService.emitAllTasks(allTasks);
+      this.taskObserverService.emitAllTasks(allTasks);
     });
   }
 }
