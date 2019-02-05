@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { TaskCounterService } from './task-counter.service';
+import { TaskEmitterService } from './task-emitter.service';
 
-describe('TaskCounterService', () => {
-  let service: TaskCounterService;
+describe('TaskEmitterService', () => {
+  let service: TaskEmitterService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.get(TaskCounterService);
+    service = TestBed.get(TaskEmitterService);
   });
 
   it('should be created', () => {

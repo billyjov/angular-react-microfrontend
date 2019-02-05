@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 import { Task } from 'src/app/tasks/shared/models/task.model';
-import { ApiService } from 'src/app/core/api.service';
+import { ApiService } from 'src/app/core/api/api.service';
 
 @Injectable({
   providedIn: 'root'

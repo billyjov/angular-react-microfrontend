@@ -2,12 +2,12 @@ import { Injectable } from '@angular/core';
 
 import { BehaviorSubject, Observable } from 'rxjs';
 
-import { Task } from '../tasks/shared/models/task.model';
+import { Task } from 'src/app/tasks/shared/models/task.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class TaskCounterService {
+export class TaskEmitterService {
 
   private allTasksSubject = new BehaviorSubject<Task[]>([]);
   constructor() { }
