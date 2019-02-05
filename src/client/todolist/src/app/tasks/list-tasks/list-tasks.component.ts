@@ -56,6 +56,10 @@ export class ListTasksComponent implements OnInit {
     });
   }
 
+  public isEmptyTasks(): boolean {
+    return this.tasks.length === 0;
+  }
+
   private initTaskLists(): void {
     this.tasksHttpService.getAllTasks().subscribe((allTasks: Task[]) => {
       this.tasks = allTasks;
