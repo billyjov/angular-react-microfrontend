@@ -5,8 +5,8 @@ import logo from './logo.svg';
 
 import Header from './components/header/Header.jsx';
 import Footer from './components/footer/Footer.jsx';
-import DailyTasks from './components/daily-tasks/index.jsx';
-import WeeklyTasks from './components/weekly-tasks/index.jsx';
+import DailyTasks from './components/daily-tasks/DailyTasks.jsx';
+import WeeklyTasks from './components/weekly-tasks/WeeklyTasks.jsx';
 
 export default class App extends Component {
     constructor(props) {
