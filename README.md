@@ -9,7 +9,7 @@ microfrontend demo using Angular and React alongs with a NodeJS API
 - Frontend: [Angular](https://angular.io/) and [ReactJS](https://reactjs.org/)
 - CSS based on [Twitter's bootstrap](https://getbootstrap.com/)
 
-# Installation
+# :wrench: Installation
 
 ## Platform & tools
 
@@ -34,15 +34,15 @@ $ npm run dev or yarn dev
 
 ```bash
 $ cd src/client/todolist
-$ npm install
-$ npm run build:elements
+$ npm install or yarn
+$ npm run build:elements or yarn build:elements
 $ cd ..
 $ cd todo-details
-$ npm install
-$ npm run start
+$ npm install or yarn
+$ npm run start or yarn start
 
 ```
 
 - Browse to the application at [http://localhost:3000](http://localhost:3000)
 
-- Enjoy it!
+Built with all :heart: of the world by [billyjov](https://github.com/billyjov)
