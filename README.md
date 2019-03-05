@@ -1,7 +1,7 @@
 # angular-react-microfrontend
 microfrontend demo using Angular and React alongs with a NodeJS API
 
-# Stack
+# :art: Stack
 
 - Persistence store: [MySQL](https://www.mysql.com/)
 - ORM: [TypeORM](http://typeorm.io/#/)
@@ -11,11 +11,7 @@ microfrontend demo using Angular and React alongs with a NodeJS API
 
 # :wrench: Installation
 
-## Platform & tools
-
-# Building
-
-# Running
+# :running: Running
 
 ## Start the Server
 
@@ -23,8 +19,8 @@ microfrontend demo using Angular and React alongs with a NodeJS API
 - Run the server
 
 Open your terminal and run following commands:
-```bash
 
+```bash
 $ cd src/server
 $ npm install or yarn install
 $ npm run dev or yarn dev
@@ -40,9 +36,12 @@ $ cd ..
 $ cd todo-details
 $ npm install or yarn
 $ npm run start or yarn start
-
 ```
 
 - Browse to the application at [http://localhost:3000](http://localhost:3000)
 
-Built with all :heart: of the world by [billyjov](https://github.com/billyjov)
+# :page_facing_up: Licence
+
+Built with all :heart: of the world by [Billy Lando](https://github.com/billyjov).
+
+MIT License (MIT) © [Billy Lando](https://github.com/billyjov)
