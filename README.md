@@ -11,6 +11,34 @@ microfrontend demo using Angular and React alongs with a NodeJS API
 
 # :wrench: Installation
 
+Adjust persistence settings with your local configuration. Just Change host and port and the database name inside the `ormconfig.json` located at `src/server/ormconfig.json`.
+
+```json
+{
+    "type": "mysql",
+    "host": "localhost",
+    "port": 3306,
+    "username": "root",
+    "password": "",
+    "database": "microfrontends",
+    "synchronize": true,
+    "entities": [
+        "api/entities/*.ts"
+    ],
+    "subscribers": [
+        "api/subscribers/*.ts"
+    ],
+    "migrations": [
+        "api/migrations/*.ts"
+    ],
+    "cli": {
+        "entitiesDir": "api/entities",
+        "migrationsDir": "api/migrations",
+        "subscribersDir": "api/subscribers"
+    }
+}
+```
+
 # :running: Running
 
 ## Start the Server
