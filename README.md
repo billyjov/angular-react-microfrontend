@@ -68,6 +68,30 @@ $ npm run start or yarn start
 
 - Browse to the application at [http://localhost:3000](http://localhost:3000)
 
+# :rotating_light: Run Tests
+
+## Run NodeJS Tests
+
+```bash
+$ cd src/server/
+$ npm run test or yarn test
+```
+
+## Run Angular Tests
+
+```bash
+$ cd src/client/todolist
+$ npm run test or yarn test
+```
+
+## Run ReactJS Tests
+
+```bash
+$ cd sr/client/todo-details
+$ npm run test or yarn test
+```
+
+
 # :page_facing_up: Licence
 
 Built with all :heart: of the world by [Billy Lando](https://github.com/billyjov).
