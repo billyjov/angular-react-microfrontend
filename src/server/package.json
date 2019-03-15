@@ -35,7 +35,7 @@
         "@types/express": "^4.16.0",
         "@types/jest": "^23.3.13",
         "@types/supertest": "^2.0.7",
-        "jest": "^23.6.0",
+        "jest": "^24.5.0",
         "nodemon": "^1.18.9",
         "supertest": "^3.4.2",
         "ts-jest": "^23.10.5",
