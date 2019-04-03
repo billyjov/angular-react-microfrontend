@@ -22,7 +22,7 @@
     "@angular/platform-browser-dynamic": "~7.2.3",
     "@angular/router": "~7.2.3",
     "@webcomponents/custom-elements": "^1.2.1",
-    "bootstrap": "^4.2.1",
+    "bootstrap": "^4.3.1",
     "core-js": "^2.5.4",
     "document-register-element": "^1.7.2",
     "material-icons": "^0.3.0",
@@ -30,7 +30,7 @@
     "zone.js": "~0.8.29"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~0.12.0",
+    "@angular-devkit/build-angular": "^0.13.7",
     "@angular/cli": "~7.3.0",
     "@angular/compiler-cli": "^7.2.9",
     "@angular/language-service": "~7.2.3",
