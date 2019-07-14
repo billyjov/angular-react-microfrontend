@@ -94,7 +94,7 @@ export default class App extends Component {
                 <div className="container-fluid mb-5">
                     <div className="row">
                         <div className="col-md-8">
-                            <app-ng-todolist ref={elem => this.nv = elem} reactEvent={this.state.totalDoneTasks}></app-ng-todolist>
+                            <app-ng-todolist ref={elem => this.nv = elem} ></app-ng-todolist>
                         </div>
                         <div className="col-md-4">
                             <DailyTasks logo={logo} allDailyTasks={this.state.allDailyTasks}></DailyTasks>
