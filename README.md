@@ -1,15 +1,27 @@
 # angular-react-microfrontend
 microfrontend demo using Angular and React alongs with a NodeJS API
 
-# :art: Stack
+# 🎨 Stack
 
 - Persistence store: [MySQL](https://www.mysql.com/)
 - ORM: [TypeORM](http://typeorm.io/#/)
 - Backend: [Node.js](https://nodejs.org/en/)
-- Frontend: [Angular](https://angular.io/) and [ReactJS](https://reactjs.org/)
+- Frontend: [Angular](https://angular.io/) 11 and [ReactJS](https://reactjs.org/)
 - CSS based on [Twitter's bootstrap](https://getbootstrap.com/)
 
-# :wrench: Installation
+# 🏗️ Global architecture
+
+![Architecture](img/poc-architecture.jpg)
+
+## Angular app modules view
+
+![Angular module view](img/poc-ng-modul-view.jpg)
+
+## React app component structure
+
+![React components](img/poc-rx-modul-view.jpg)
+
+# 🔧 Installation
 
 Adjust persistence settings with your local configuration. Just Change host and port and the database name inside the `ormconfig.json` located at `src/server/ormconfig.json`.
 
@@ -39,7 +51,7 @@ Adjust persistence settings with your local configuration. Just Change host and 
 }
 ```
 
-# :running: Running
+# 🏃 Running
 
 ## Start the Server
 
@@ -87,12 +99,12 @@ $ npm run test or yarn test
 ## Run ReactJS Tests
 
 ```bash
-$ cd sr/client/todo-details
+$ cd src/client/todo-details
 $ npm run test or yarn test
 ```
 
 
-# :page_facing_up: Licence
+# 📄 Licence
 
 Built with all :heart: of the world by [Billy Lando](https://github.com/billyjov).
 
