@@ -28,7 +28,7 @@
         "body-parser": "^1.18.3",
         "express": "^4.16.4",
         "mysql": "^2.16.0",
-        "typeorm": "^0.2.11"
+        "typeorm": "^0.2.25"
     },
     "devDependencies": {
         "@types/body-parser": "^1.17.0",
