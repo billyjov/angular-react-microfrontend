@@ -1,0 +1,11 @@
+message: "If you use this proof of concept software, please cite it as below."
+authors:
+  - family-names: Lando
+    given-names: Billy
+title: "Angular-React-Microfrontend"
+version: 0.3.0
+date-released: 2021-09-01
+identifiers:
+  - description: React vs Angular ? Why not both ! Micro frontend demo using Angular and React alongs with a NodeJS API
+license: MIT
+repository-code: "https://github.com/billyjov/angular-react-microfrontend"
