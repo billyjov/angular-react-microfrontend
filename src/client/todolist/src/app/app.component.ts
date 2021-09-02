@@ -1,4 +1,5 @@
-import { Component, ViewEncapsulation, Output, EventEmitter, OnInit } from '@angular/core';
+import { Component, ViewEncapsulation, Output, EventEmitter, OnInit, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
 
 import { TaskObserverService } from './core/task-observer/task-observer.service';
 import { Task } from './tasks/shared/models/task.model';
@@ -11,15 +12,22 @@ import { Task } from './tasks/shared/models/task.model';
   // Keep calm and wait :-)
   encapsulation: ViewEncapsulation.Emulated
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
 
   @Output() ngAllTasksEmitter = new EventEmitter<Task[]>();
+
+  private subscriptions: Subscription = new Subscription();
 
   constructor(private taskObserverService: TaskObserverService) { }
 
   ngOnInit() {
-    this.taskObserverService.getAllTaskSubject().subscribe(tasks => {
+    this.subscriptions.add(
+      this.taskObserverService.getAllTaskSubject().subscribe(tasks => {
       this.ngAllTasksEmitter.emit(tasks);
-    });
+    }));
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.unsubscribe();
   }
 }
