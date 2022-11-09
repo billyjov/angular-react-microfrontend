@@ -48,8 +48,8 @@ export default class App extends Component {
     getDailyTasks = (allTasks) => {
         const date = new Date();
         const year = date.getUTCFullYear();
-        const month = (date.getUTCMonth() < 9 ? '0' : '') + (date.getUTCMonth() + 1);
-        const day = (date.getUTCDate() < 9 ? '0' : '') + (date.getUTCDate());
+        const month = (date.getUTCMonth() <= 9 ? '0' : '') + (date.getUTCMonth() + 1);
+        const day = (date.getUTCDate() <= 9 ? '0' : '') + (date.getUTCDate());
         const today = `${year}-${month}-${day}`;
         let dailyTasks = [];
         allTasks.forEach(task => {
