@@ -25,8 +25,8 @@
     },
     "license": "MIT",
     "dependencies": {
-        "body-parser": "^1.18.3",
-        "express": "^4.16.4",
+        "body-parser": "^1.20.1",
+        "express": "^4.18.2",
         "mysql": "^2.16.0",
         "typeorm": "^0.2.25"
     },
