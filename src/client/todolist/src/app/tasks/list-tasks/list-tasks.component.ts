@@ -1,19 +1,22 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { DatePipe } from '@angular/common';
-import { FormGroup } from '@angular/forms';
+import { DatePipe } from "@angular/common";
+import { Component, Input, OnDestroy, OnInit } from "@angular/core";
+import { FormGroup } from "@angular/forms";
 
-import { Task } from 'src/app/tasks/shared/models/task.model';
-import { TasksHttpService } from 'src/app/tasks/shared/services/tasks-http.service';
-import { TaskObserverService } from 'src/app/core/task-observer/task-observer.service';
+import { Subscription } from "rxjs";
+
+import { TaskObserverService } from "src/app/core/task-observer/task-observer.service";
+import { Task } from "src/app/tasks/shared/models/task.model";
+import { TasksHttpService } from "src/app/tasks/shared/services/tasks-http.service";
 
 @Component({
-  selector: 'app-list-tasks',
-  templateUrl: './list-tasks.component.html',
-  styleUrls: ['./list-tasks.component.scss']
+  selector: "app-list-tasks",
+  templateUrl: "./list-tasks.component.html",
+  styleUrls: ["./list-tasks.component.scss"],
 })
-export class ListTasksComponent implements OnInit {
-
+export class ListTasksComponent implements OnInit, OnDestroy {
   public tasks: Task[];
+  public tasks$ = this.tasksHttpService.getAllTasks();
+  private subscriptions: Subscription = new Subscription();
 
   @Input()
   public taskForm: FormGroup;
@@ -21,39 +24,47 @@ export class ListTasksComponent implements OnInit {
   constructor(
     private tasksHttpService: TasksHttpService,
     private taskObserverService: TaskObserverService
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.tasksHttpService.retrieveAllTasks();
     this.initTaskLists();
   }
 
+  ngOnDestroy(): void {
+    this.subscriptions.unsubscribe();
+  }
+
   public editTask(task: Task): void {
-    const datePipe = new DatePipe('en-US');
-    const formatedDueDate = datePipe.transform(task.dueDate, 'yyyy-MM-dd');
+    const datePipe = new DatePipe("en-US");
+    const formatedDueDate = datePipe.transform(task.dueDate, "yyyy-MM-dd");
     this.taskForm.setValue({
       id: task.id,
       title: task.title,
-      dueDate: formatedDueDate
+      dueDate: formatedDueDate,
     });
     this.tasksHttpService.isEditMode.next(true);
   }
 
   public removeTask(task: Task): void {
-    this.tasksHttpService.deleteTask(task).subscribe((response: Task) => {
-      if (response) {
-        this.tasksHttpService.retrieveAllTasks();
-      }
-    });
+    this.subscriptions.add(
+      this.tasksHttpService.deleteTask(task).subscribe((response: Task) => {
+        if (response) {
+          this.tasksHttpService.retrieveAllTasks();
+        }
+      })
+    );
   }
 
   public markAsDone(isChecked, task: Task): void {
     task.done = isChecked.target.checked;
-    this.tasksHttpService.updateTask(task).subscribe((response: Task) => {
-      if (response) {
-        this.tasksHttpService.retrieveAllTasks();
-      }
-    });
+    this.subscriptions.add(
+      this.tasksHttpService.updateTask(task).subscribe((response: Task) => {
+        if (response) {
+          this.tasksHttpService.retrieveAllTasks();
+        }
+      })
+    );
   }
 
   public isEmptyTasks(): boolean {
@@ -61,9 +72,11 @@ export class ListTasksComponent implements OnInit {
   }
 
   private initTaskLists(): void {
-    this.tasksHttpService.getAllTasks().subscribe((allTasks: Task[]) => {
-      this.tasks = allTasks;
-      this.taskObserverService.emitAllTasks(allTasks);
-    });
+    this.subscriptions.add(
+      this.tasksHttpService.getAllTasks().subscribe((allTasks: Task[]) => {
+        this.tasks = allTasks;
+        this.taskObserverService.emitAllTasks(allTasks);
+      })
+    );
   }
 }

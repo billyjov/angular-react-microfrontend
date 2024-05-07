@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject ,Subject, Observable } from 'rxjs';
 
 import { Task } from 'src/app/tasks/shared/models/task.model';
 
@@ -9,7 +9,7 @@ import { Task } from 'src/app/tasks/shared/models/task.model';
 })
 export class TaskObserverService {
 
-  private allTasksSubject = new BehaviorSubject<Task[]>([]);
+  private allTasksSubject = new Subject<Task[]>();
   constructor() { }
 
   public emitAllTasks(tasks: Task[]): void {

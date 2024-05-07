@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 
 import { Task } from 'src/app/tasks/shared/models/task.model';
 import { ApiService } from 'src/app/core/api/api.service';
@@ -9,7 +9,7 @@ import { ApiService } from 'src/app/core/api/api.service';
 })
 export class TasksHttpService {
 
-  private taskSubject: BehaviorSubject<Task[]>;
+  private taskSubject: Subject<Task[]>;
   private editModeSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   constructor(private apiService: ApiService) {
@@ -26,7 +26,7 @@ export class TasksHttpService {
     });
   }
 
-  public getAllTasks(): BehaviorSubject<Task[]> {
+  public getAllTasks(): Subject<Task[]> {
     return this.taskSubject;
   }
 
