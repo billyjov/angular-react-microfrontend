@@ -1,33 +1,40 @@
 <div class="card mt-3">
-  <div class="card-header bg-info text-white text-center">
-    <img class="ng-logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg=="
+  <div class="card-header bg-primary text-white text-center">
+    <img class="ng-logo"
+      src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg=="
       alt="angular logo">
     <h4 class="text-uppercase">Add new task to your todo list :)</h4>
   </div>
   <div class="card-body">
     <form [formGroup]="taskForm" (ngSubmit)="submitTaskForm()">
-      <div class="form-row">
-        <div class="form-group col-lg-8">
+      <div class="row">
+        <div class="form-group col">
           <label for="title">Title</label>
           <input type="text" class="form-control" formControlName="title"
-            placeholder="enter your task title" [ngClass]="{'is-invalid': isSubmitted && controls.title.errors}">
-          <div *ngIf="isSubmitted && controls.title.errors" class="invalid-feedback">
+            placeholder="enter your task title"
+            [ngClass]="{'is-invalid': isSubmitted && controls.title.errors}">
+          <div *ngIf="isSubmitted && controls.title.errors"
+            class="invalid-feedback">
             Please enter a task title.
           </div>
         </div>
-        <div class="form-group col-lg-4">
+        <div class="form-group col">
           <label for="dueDate">Due date</label>
-          <input type="date" id="dueDate" [min]="getActualDate()" class="form-control"
-            formControlName="dueDate">
+          <input type="date" id="dueDate" [min]="getActualDate()"
+            class="form-control" formControlName="dueDate">
         </div>
       </div>
       <input type="text" hidden formControlName="id">
-      <button class="btn" [ngClass]="{
-        'btn-primary': isEditMode,
-        'btn-info': !isEditMode
-      }">
-        {{isEditMode ? 'Update Task' : 'Create Task'}}
-      </button>
+
+      <div class="col-12 mt-3">
+        <button class="btn" [ngClass]="{
+          'btn-info': isEditMode,
+          'btn-primary': !isEditMode
+        }">
+          {{isEditMode ? 'Update Task' : 'Create Task'}}
+        </button>
+
+      </div>
     </form>
   </div>
 </div>
