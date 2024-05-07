@@ -1,10 +1,10 @@
-@import '~bootstrap/scss/bootstrap';
-@import '~material-icons/iconfont/material-icons.css';
+@import '../../../../node_modules/bootstrap/scss/bootstrap';
+@import '../../../../node_modules/material-icons/iconfont/material-icons.css';
+
 .is-done {
-    &:nth-of-type(odd),
-    &:nth-of-type(even) {
-        background-color: #1E636E !important;
-        color: #FFFFFF69;
-        text-decoration: line-through;
-    }
+
+  &:nth-of-type(odd),
+  &:nth-of-type(even) {
+    text-decoration: line-through;
+  }
 }

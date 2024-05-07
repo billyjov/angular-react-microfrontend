@@ -2,7 +2,7 @@ import { DatePipe } from "@angular/common";
 import { Component, Input, OnDestroy, OnInit } from "@angular/core";
 import { FormGroup } from "@angular/forms";
 
-import { Subscription } from "rxjs";
+import { Observable, Subscription } from "rxjs";
 
 import { TaskObserverService } from "src/app/core/task-observer/task-observer.service";
 import { Task } from "src/app/tasks/shared/models/task.model";
@@ -15,7 +15,7 @@ import { TasksHttpService } from "src/app/tasks/shared/services/tasks-http.servi
 })
 export class ListTasksComponent implements OnInit, OnDestroy {
   public tasks: Task[];
-  public tasks$ = this.tasksHttpService.getAllTasks();
+  public tasks$: Observable<Task[]>;
   private subscriptions: Subscription = new Subscription();
 
   @Input()
@@ -29,6 +29,7 @@ export class ListTasksComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.tasksHttpService.retrieveAllTasks();
     this.initTaskLists();
+    this.tasks$ = this.tasksHttpService.getAllTasks()
   }
 
   ngOnDestroy(): void {
