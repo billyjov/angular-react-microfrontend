@@ -5,8 +5,8 @@ microfrontend demo using Angular and React alongs with a NodeJS API
 
 - Persistence store: [MySQL](https://www.mysql.com/)
 - ORM: [TypeORM](http://typeorm.io/#/)
-- Backend: [Node.js](https://nodejs.org/en/)
-- Frontend: [Angular](https://angular.io/) 11 and [ReactJS](https://reactjs.org/)
+- Backend: [Node.js](https://nodejs.org/en/) Node v20
+- Frontend: [Angular](https://angular.io/) 17 and [ReactJS](https://reactjs.org/)
 - CSS based on [Twitter's bootstrap](https://getbootstrap.com/)
 
 # 🏗️ Global architecture
