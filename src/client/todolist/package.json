@@ -8,7 +8,7 @@
     "test": "ng test --browsers=HeadlessChromeWithoutSandbox --code-coverage",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "build:elements": "ng build --configuration production --outputHashing=none --outputPath=../todo-details/public/ng-todolist"
+    "build:elements": "ng build --configuration production --output-hashing=none --single-bundle --output-path=../todo-details/public/ng-todolist"
   },
   "private": true,
   "dependencies": {
@@ -26,6 +26,7 @@
     "core-js": "3.36.1",
     "document-register-element": "^1.7.2",
     "material-icons": "^0.3.0",
+    "ngx-build-plus": "^17.0.0",
     "rxjs": "7.5.0",
     "zone.js": "~0.14.2"
   },
