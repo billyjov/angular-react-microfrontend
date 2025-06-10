@@ -1,10 +1,10 @@
 {
-    "type": "mysql",
+    "type": "postgres",
     "host": "localhost",
-    "port": 3306,
-    "username": "root",
-    "password": "",
-    "database": "microfrontends",
+    "port": 5432,
+    "username": "todo",
+    "password": "todo",
+    "database": "todos",
     "synchronize": true,
     "entities": [
         "api/entities/*.ts"

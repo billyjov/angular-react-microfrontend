@@ -1,15 +1,17 @@
 import * as bodyParser from 'body-parser';
 import * as express from 'express';
+import * as cors from 'cors';
 import 'reflect-metadata';
 import { Connection, createConnection } from 'typeorm';
 import router from './router';
 
 const app = express();
 
+app.use(cors());
 app.use(bodyParser.json());
 app.use((_req: express.Request, res: express.Response, next: express.NextFunction) => {
     res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
     res.header('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type');
     next();
 });
